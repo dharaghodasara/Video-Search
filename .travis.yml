@@ -5,11 +5,11 @@ before_install :
   - docker build -t dharag/docker-video-search -f Dockerfile.dev .
 script : 
   - docker run -e CI=true dharag/docker-video-search npm run test 
-deloy :
+deploy :
   provider: elasticbeanstalk
   region: "us-east-1"
   app: "docker-video-search"
-  env: "DockerVideoSearch-env"
+  env: "DockerVideoSearch-env-1"
   bucket_name: "elasticbeanstalk-us-east-1-399861883322"
   bucket_path: "docker"
   on:
