@@ -5,3 +5,16 @@ before_install :
   - docker build -t dharag/docker-video-search -f Dockerfile.dev .
 script : 
   - docker run -e CI=true dharag/docker-video-search npm run test 
+deloy :
+  provider: elasticbeanstalk
+  region: "us-east-1"
+  app: "docker-video-search"
+  env: "DockerVideoSearch-env"
+  bucket_name: "elasticbeanstalk-us-east-1-399861883322"
+  bucket_path: "docker"
+  on:
+    branch: master
+  access_key_id: 
+    secure: $AWS_KEY
+  secret_access_key: 
+    secure: $AWS_SECRET
